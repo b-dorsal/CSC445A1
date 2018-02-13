@@ -6,17 +6,17 @@ public class main {
     static final int PORT = 2691;
     public static void main(String args[]){
         int SCarg = Integer.parseInt(args[0]);
+        String serverIP = args[1];
         if(SCarg == 0){
             Server testServer = new Server(PORT);
             System.out.println("Server started. Listening on " + PORT);
 //            testServer.runRTT(1);
-            testServer.runTransRate(1024);
+            testServer.runTransRate(Integer.parseInt(args[2]));
         }else {
-            String serverIP = args[1];
             Client testClient = new Client(PORT, serverIP);
             System.out.println("Client started on " + PORT);
 //            testClient.runRTT(1);
-            testClient.runTransRate(1024);
+            testClient.runTransRate(Integer.parseInt(args[2]));
         }
 
         System.out.println("done.");
