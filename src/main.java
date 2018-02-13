@@ -9,14 +9,14 @@ public class main {
         if(SCarg == 0){
             Server testServer = new Server(PORT);
             System.out.println("Server started. Listening on " + PORT);
-            testServer.runRTT(1);
-            testServer.runTransRate(1000000);
+//            testServer.runRTT(1);
+            testServer.runTransRate(1024);
         }else {
             String serverIP = args[1];
             Client testClient = new Client(PORT, serverIP);
             System.out.println("Client started on " + PORT);
-            testClient.runRTT(1);
-            testClient.runTransRate(1000000);
+//            testClient.runRTT(1);
+            testClient.runTransRate(1024);
         }
 
         System.out.println("done.");

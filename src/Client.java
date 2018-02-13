@@ -3,6 +3,7 @@
  */
 import java.net.*;
 import java.io.*;
+import java.text.*;
 
 public class Client {
     private static int PORT;
@@ -79,7 +80,9 @@ public class Client {
 
             long elapsedSend = System.nanoTime() - startSend;
             double seconds = (double)elapsedSend / 1000000000.0;
-            System.out.println("UP= " + (Kbytes * 8) / seconds);
+            DecimalFormat df = new DecimalFormat("#.###");
+
+            System.out.println("UP= " + df.format(((Kbytes * 8)/1000000) / seconds));
 
             System.out.println("Receiving: " + Kbytes + "KB");
             long startReceive = System.nanoTime();
@@ -90,7 +93,7 @@ public class Client {
 
             long elapsedReceive = System.nanoTime() - startReceive;
             seconds = (double)elapsedReceive / 1000000000.0;
-            System.out.println("DOWN= " + (Kbytes * 8) / seconds);
+            System.out.println("DOWN= " + df.format(((Kbytes * 8)/1000000) / seconds));
 
             serverSocket.close();
             outData.close();
